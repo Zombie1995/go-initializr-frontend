@@ -12,7 +12,7 @@ export const ArchetypeCard = ({ title, description }: Props) => {
         <AnimatedBackground />
       </div>
       <div className="p-4">
-        <p className="font-medium text-[24px] text-white">{title}</p>
+        <p className="font-medium text-[36px] text-white">{title}</p>
         <p className="whitespace-pre-wrap text-white">{description}</p>
       </div>
     </div>
