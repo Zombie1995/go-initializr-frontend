@@ -6,7 +6,7 @@ export default function Initializer() {
     <ScrollWrapper>
       <ArchetypeCard
         title="Rest API"
-        description="Тут жесткое описаниеТут жесткое описаниеТут жесткое описаниеТут жесткое описаниеТут жесткое описаниеТут жесткое описаниеТут жесткое описаниеТут жесткое описаниеТут жесткое описание"
+        description="Тут жесткое описаниеТут жесткое описаниеТут жесткое описаниеddddddddsssssssssssssssТут жесткое описаниеТут жесткое описаниеТут жесткое описаниеТут жесткое описаниеТут жесткое описаниеТут жесткое описание"
       />
       <ArchetypeCard title="Telegram Bot" description="Тут жесткое описание" />
       <ArchetypeCard title="Worker" description="Тут жесткое описание" />
