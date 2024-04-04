@@ -1,15 +1,15 @@
+import { ArchetypeCard } from "entities/archetype";
 import { ScrollWrapper } from "widgets/scroll-wrapper";
 
 export default function Initializer() {
   return (
     <ScrollWrapper>
-      <div className="bg-black min-w-[500px] h-[500px]" />
-      <div className="bg-black min-w-[500px] h-[500px]" />
-      <div className="bg-black min-w-[500px] h-[500px]" />
-      <div className="bg-black min-w-[500px] h-[500px]" />
-      <div className="bg-black min-w-[500px] h-[500px]" />
-      <div className="bg-blue min-w-[500px] h-[500px]" />
-      <div className="bg-blacismin-w-[500px] h-[500px]" />
+      <ArchetypeCard title="Rest API" description="hu" />
+      <ArchetypeCard title="Telegram Bot" description="hu" />
+      <ArchetypeCard title="Worker" description="hu" />
+      <ArchetypeCard title="GraphQL" description="hu" />
+      <ArchetypeCard title="Real-Time WebSocket" description="hu" />
+      <ArchetypeCard title="Command Line Interface" description="hu" />
     </ScrollWrapper>
   );
 }
