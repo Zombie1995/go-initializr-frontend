@@ -4,7 +4,10 @@
 
 @layer components {
     :root {
-        @apply bg-[linear-gradient(to_bottom,_#5F8FB0_0svh,_#5dd2eb_20svh,_#5dd2eb_50svh,_#5dd2eb_80svh,_#5F8FB0_100svh)]
+        @apply bg-[linear-gradient(to_bottom,_#5F8FB0_0svh,_#5dd2eb_20svh,_#5dd2eb_50svh,_#5dd2eb_80svh,_#5F8FB0_100svh)] dark:bg-[linear-gradient(to_bottom,_#21323e_0svh,_#1f4851_20svh,_#1f4851_50svh,_#1f4851_80svh,_#21323e_100svh)]
+    }
+    p {
+        @apply text-[#0F283C] dark:text-white
     }
 }
 

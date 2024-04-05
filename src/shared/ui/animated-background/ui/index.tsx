@@ -21,59 +21,6 @@ export const AnimatedBackground = () => {
               values="0%;3%;0%"
               repeatCount="indefinite"
             ></animate>
-            <stop offset="0%" stopColor="rgba(189, 108, 221, 1)"></stop>
-            <stop offset="100%" stopColor="rgba(189, 108, 221, 0)"></stop>
-          </radialGradient>
-          <radialGradient
-            id="Gradient2"
-            cx="50%"
-            cy="50%"
-            fx="2.68147%"
-            fy="50%"
-            r=".5"
-          >
-            <animate
-              attributeName="fx"
-              dur="23.5s"
-              values="0%;3%;0%"
-              repeatCount="indefinite"
-            ></animate>
-            <stop offset="0%" stopColor="rgba(228, 212, 106, 1)"></stop>
-            <stop offset="100%" stopColor="rgba(228, 212, 106, 0)"></stop>
-          </radialGradient>
-          <radialGradient
-            id="Gradient3"
-            cx="50%"
-            cy="50%"
-            fx="0.836536%"
-            fy="50%"
-            r=".5"
-          >
-            <animate
-              attributeName="fx"
-              dur="21.5s"
-              values="0%;3%;0%"
-              repeatCount="indefinite"
-            ></animate>
-            <stop offset="0%" stopColor="rgba(0, 255, 255, 1)"></stop>
-            <stop offset="100%" stopColor="rgba(0, 255, 255, 0)"></stop>
-          </radialGradient>
-        </defs>
-        {/* <defs>
-          <radialGradient
-            id="Gradient1"
-            cx="50%"
-            cy="50%"
-            fx="0.441602%"
-            fy="50%"
-            r=".5"
-          >
-            <animate
-              attributeName="fx"
-              dur="34s"
-              values="0%;3%;0%"
-              repeatCount="indefinite"
-            ></animate>
             <stop offset="0%" stopColor="rgba(255, 0, 255, 1)"></stop>
             <stop offset="100%" stopColor="rgba(255, 0, 255, 0)"></stop>
           </radialGradient>
@@ -111,7 +58,7 @@ export const AnimatedBackground = () => {
             <stop offset="0%" stopColor="rgba(0, 255, 255, 1)"></stop>
             <stop offset="100%" stopColor="rgba(0, 255, 255, 0)"></stop>
           </radialGradient>
-        </defs> */}
+        </defs>
         <rect
           x="13.744%"
           y="1.18473%"

@@ -12,7 +12,7 @@ export const ScrollWrapper = ({ children, scrollFixed = false }: Props) => {
   const scrollToChild = (index: number) => {
     const childElement = scrollRef.current?.children[index];
     if (childElement) {
-      childElement.scrollIntoView({ behavior: "auto", inline: "start" });
+      childElement.scrollIntoView({ behavior: "smooth", inline: "start" });
     }
   };
 
@@ -30,7 +30,7 @@ export const ScrollWrapper = ({ children, scrollFixed = false }: Props) => {
 
   return (
     <div className="relative flex flex-col h-[100svh] overflow-hidden">
-      <div className="z-[100] absolute top-0 left-[50svw] origin-top-left w-[30svw] h-[40svh] bg-gradient-to-t from-primary to-secondary rounded-b-full scale-x-[5] translate-y-[-20svh] -translate-x-[250%]" />
+      <div className="z-[100] absolute top-0 left-[50svw] origin-top-left w-[30svw] h-[40svh] bg-gradient-to-t from-primary to-secondary dark:from-dark-primary dark:to-dark-secondary rounded-b-full scale-x-[5] translate-y-[-20svh] -translate-x-[250%]" />
       <div
         ref={scrollRef}
         className={`${
@@ -51,7 +51,7 @@ export const ScrollWrapper = ({ children, scrollFixed = false }: Props) => {
           />
         </div>
       </div>
-      <div className="z-[100] absolute bottom-0 left-[50svw] origin-top-left w-[30svw] h-[40svh] bg-gradient-to-b from-primary to-secondary rounded-t-full scale-x-[5] translate-y-[20svh] -translate-x-[250%]" />
+      <div className="z-[100] absolute bottom-0 left-[50svw] origin-top-left w-[30svw] h-[40svh] bg-gradient-to-b from-primary to-secondary dark:from-dark-primary dark:to-dark-secondary rounded-t-full scale-x-[5] translate-y-[20svh] -translate-x-[250%]" />
     </div>
   );
 };
