@@ -8,6 +8,7 @@ export default {
         "dark-secondary": "#241c2b",
         primary: "#5dd2eb",
         secondary: "#644E78",
+        dark: "#0F283C",
       },
     },
   },

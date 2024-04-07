@@ -4,7 +4,9 @@ import {
   $archetypeStore,
   setSelectedArchetype,
 } from "entities/archetype/model";
+import { Parameterizer } from "widgets/parameterizer";
 import { ScrollWrapper } from "widgets/scroll-wrapper";
+import { childSelected } from "widgets/scroll-wrapper/model";
 
 export default function Initializer() {
   const [archetypeStore, onSelectedArchetype] = useUnit([
@@ -13,7 +15,7 @@ export default function Initializer() {
   ]);
 
   return (
-    <>
+    <div className="relative overflow-hidden">
       <ScrollWrapper
         selectedChildIndex={archetypeStore.selectedArchetypeIndex}
         onChildClick={onSelectedArchetype}
@@ -29,6 +31,19 @@ export default function Initializer() {
           />
         ))}
       </ScrollWrapper>
-    </>
+      <div
+        className={`${
+          childSelected(archetypeStore.selectedArchetypeIndex)
+            ? "translate-x-[0%]"
+            : "translate-x-[110%]"
+        } z-[200] transition-all duration-1000 absolute top-0 right-0`}
+      >
+        <Parameterizer
+          onBack={() => {
+            onSelectedArchetype(-1);
+          }}
+        />
+      </div>
+    </div>
   );
 }
