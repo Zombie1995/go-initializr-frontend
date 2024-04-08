@@ -4,7 +4,7 @@ import {
   $archetypeStore,
   setSelectedArchetype,
 } from "entities/archetype/model";
-import { useEffect } from "react";
+import useEscapeKeyListener from "shared/model/useEscapeKeyListener";
 import { Parameterizer } from "widgets/parameterizer";
 import { ScrollWrapper } from "widgets/scroll-wrapper";
 import { childSelected } from "widgets/scroll-wrapper/model";
@@ -15,19 +15,9 @@ export default function Initializer() {
     setSelectedArchetype,
   ]);
 
-  useEffect(() => {
-    function handleKeyDown(event: any) {
-      if (event.key === "Escape") {
-        onSelectedArchetype(-1);
-      }
-    }
-
-    document.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [onSelectedArchetype]);
+  useEscapeKeyListener(() => {
+    onSelectedArchetype(-1);
+  });
 
   return (
     <div className="relative overflow-hidden">
