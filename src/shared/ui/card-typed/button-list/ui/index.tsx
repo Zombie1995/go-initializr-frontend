@@ -23,11 +23,6 @@ export const ButtonList = ({
   }, [only]);
 
   const handleClick = (index: number) => {
-    // if (only) {
-    //   setChosenButtonIndices(new Set<number>().add(index));
-    //   return;
-    // }
-
     if (chosenButtonIndices.has(index)) {
       if (only !== "required") {
         chosenButtonIndices.delete(index);
@@ -40,12 +35,6 @@ export const ButtonList = ({
         setChosenButtonIndices(new Set(chosenButtonIndices.add(index)));
       }
     }
-
-    // if (chosenButtonIndices.delete(index)) {
-    //   setChosenButtonIndices(new Set(chosenButtonIndices));
-    // } else {
-    //   setChosenButtonIndices(new Set(chosenButtonIndices.add(index)));
-    // }
   };
 
   return (
