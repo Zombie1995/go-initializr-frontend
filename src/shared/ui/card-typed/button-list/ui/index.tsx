@@ -4,35 +4,48 @@ import { CardButton } from "../../button/ui";
 interface Props {
   listName?: string;
   titles?: Array<string>;
-  oneRequired?: boolean;
+  only?: "optional" | "required" | "none";
 }
 
 export const ButtonList = ({
   listName = "",
   titles = [],
-  oneRequired = false,
+  only = "none",
 }: Props) => {
   const [chosenButtonIndices, setChosenButtonIndices] = useState<Set<number>>(
     new Set()
   );
 
   useEffect(() => {
-    if (oneRequired) {
+    if (only === "required") {
       setChosenButtonIndices(new Set<number>().add(0));
     }
-  }, [oneRequired]);
+  }, [only]);
 
   const handleClick = (index: number) => {
-    if (oneRequired) {
-      setChosenButtonIndices(new Set<number>().add(index));
-      return;
+    // if (only) {
+    //   setChosenButtonIndices(new Set<number>().add(index));
+    //   return;
+    // }
+
+    if (chosenButtonIndices.has(index)) {
+      if (only !== "required") {
+        chosenButtonIndices.delete(index);
+        setChosenButtonIndices(new Set(chosenButtonIndices));
+      }
+    } else {
+      if (only !== "none") {
+        setChosenButtonIndices(new Set<number>().add(index));
+      } else {
+        setChosenButtonIndices(new Set(chosenButtonIndices.add(index)));
+      }
     }
 
-    if (chosenButtonIndices.delete(index)) {
-      setChosenButtonIndices(new Set(chosenButtonIndices));
-    } else {
-      setChosenButtonIndices(new Set(chosenButtonIndices.add(index)));
-    }
+    // if (chosenButtonIndices.delete(index)) {
+    //   setChosenButtonIndices(new Set(chosenButtonIndices));
+    // } else {
+    //   setChosenButtonIndices(new Set(chosenButtonIndices.add(index)));
+    // }
   };
 
   return (

@@ -13,12 +13,16 @@ export const Parameterizer = ({ onBack = () => {} }: Props) => {
       </div>
       <div className="flex flex-col gap-6 p-10 ">
         <ButtonList
-          oneRequired
+          only="required"
           listName="DataBase"
           titles={["Postgres", "MySQL"]}
         />
         <ButtonList
-          oneRequired
+          listName="DataBase"
+          titles={["Postgres", "MySQL", "MySQL"]}
+        />
+        <ButtonList
+          only="optional"
           listName="DataBase"
           titles={["Postgres", "MySQL", "MySQL"]}
         />
