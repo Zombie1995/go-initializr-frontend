@@ -1,6 +1,14 @@
-export const DownloadArchetype = () => {
+interface Props {
+  archetypeName: string;
+  params: any;
+}
+
+export const DownloadArchetype = ({ archetypeName, params }: Props) => {
   return (
-    <button className="size-[256px]">
+    <button
+      className="size-[256px]"
+      // onClick={() => fetchDownloadArchetype(archetypeName, params)}
+    >
       <svg
         className="fill-[#21ac4a] dark:fill-[#a1f859]"
         width="256"

@@ -2,28 +2,31 @@ import { useUnit } from "effector-react";
 import { ArchetypeCard } from "entities/archetype";
 import {
   $archetypeStore,
+  fetchArchetypesFromLocalStorage,
   setSelectedArchetype,
 } from "entities/archetype/model";
+import { useEffect } from "react";
 import useEscapeKeyListener from "shared/model/useEscapeKeyListener";
 import { Parameterizer } from "widgets/parameterizer";
 import { ScrollWrapper } from "widgets/scroll-wrapper";
 import { childSelected } from "widgets/scroll-wrapper/model";
 
 export default function Initializer() {
-  const [archetypeStore, onSelectedArchetype] = useUnit([
-    $archetypeStore,
-    setSelectedArchetype,
-  ]);
+  const archetypeStore = useUnit($archetypeStore);
+
+  useEffect(() => {
+    fetchArchetypesFromLocalStorage();
+  }, []);
 
   useEscapeKeyListener(() => {
-    onSelectedArchetype(-1);
+    setSelectedArchetype(-1);
   });
 
   return (
     <div className="relative overflow-hidden">
       <ScrollWrapper
         selectedChildIndex={archetypeStore.selectedArchetypeIndex}
-        onChildClick={onSelectedArchetype}
+        onChildClick={setSelectedArchetype}
       >
         {archetypeStore.archetypes.map((archetype, index) => (
           <ArchetypeCard
@@ -31,7 +34,7 @@ export default function Initializer() {
             title={archetype.title}
             description={archetype.description}
             onClick={() => {
-              onSelectedArchetype(index);
+              setSelectedArchetype(index);
             }}
             selected={index === archetypeStore.selectedArchetypeIndex}
           />
@@ -45,11 +48,17 @@ export default function Initializer() {
         } z-[200] transition-all duration-1000 absolute top-0 right-0`}
       >
         <Parameterizer
+          archetype={
+            archetypeStore.archetypes[archetypeStore.lastSelectedArchetypeIndex]
+          }
           onBack={() => {
-            onSelectedArchetype(-1);
+            setSelectedArchetype(-1);
           }}
         />
       </div>
+      {/* <div className="z-[100] absolute bottom-[7svh] left-1/2 -translate-x-1/2">
+        <p>Написать</p>
+      </div> */}
     </div>
   );
 }

@@ -1,12 +1,15 @@
+import { Archetype, setSelectedArchetypeParam } from "entities/archetype/model";
 import { DownloadArchetype } from "features/download-archetype";
 import { ArrowBackButton } from "shared/ui/arrow-back-button";
 import { ButtonList } from "shared/ui/card-typed";
+import { getSelectedParameterOption } from "../model";
 
 interface Props {
+  archetype: Archetype;
   onBack?: () => void;
 }
 
-export const Parameterizer = ({ onBack = () => {} }: Props) => {
+export const Parameterizer = ({ archetype, onBack = () => {} }: Props) => {
   return (
     <div className="flex">
       <div className="h-[100svh] w-[30svw]" onClick={onBack} />
@@ -17,55 +20,29 @@ export const Parameterizer = ({ onBack = () => {} }: Props) => {
               <ArrowBackButton onClick={onBack} />
             </div>
             <div className="flex flex-col gap-6 p-10">
-              <ButtonList
-                only="required"
-                listName="DataBase"
-                titles={["Postgres", "MySQL"]}
-              />
-              <ButtonList
-                listName="DataBase"
-                titles={["Postgres", "MySQL", "MySQL"]}
-              />
-              <ButtonList
-                only="optional"
-                listName="DataBase"
-                titles={["Postgres", "MySQL", "MySQL"]}
-              />
-              <ButtonList
-                only="optional"
-                listName="DataBase"
-                titles={[
-                  "Postgres",
-                  "MySQL",
-                  "MySQL",
-                  "MySQL",
-                  "MySQL",
-                  "MySQL",
-                  "MySQL",
-                  "MySQL",
-                  "MySQL",
-                ]}
-              />
-              <ButtonList
-                only="optional"
-                listName="DataBase"
-                titles={[
-                  "Postgres",
-                  "MySQL",
-                  "MySQL",
-                  "MySQL",
-                  "MySQL",
-                  "MySQL",
-                  "MySQL",
-                  "MySQL",
-                  "MySQL",
-                ]}
-              />
+              {archetype.params.map((param, index) => (
+                <ButtonList
+                  key={index}
+                  only={param.optional ? "optional" : "required"}
+                  listName={param.showTitle}
+                  titles={param.variants}
+                  chosen={new Set([param.chosenVariant])}
+                  onClick={(indices) => {
+                    setSelectedArchetypeParam({
+                      ...param,
+                      chosenVariant: getSelectedParameterOption(indices),
+                    });
+                  }}
+                />
+              ))}
             </div>
           </div>
         </div>
         <div className="lg:absolute lg:top-[50svh] lg:right-[21svw] lg:-translate-y-1/2 lg:translate-x-1/2 lg:mt-0 -mt-8 lg:block flex justify-center">
-          <DownloadArchetype />
+          <DownloadArchetype
+            archetypeName={archetype.title}
+            params={archetype.params}
+          />
         </div>
       </div>
     </div>

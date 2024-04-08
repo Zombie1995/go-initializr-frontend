@@ -5,16 +5,24 @@ interface Props {
   listName?: string;
   titles?: Array<string>;
   only?: "optional" | "required" | "none";
+  onClick?: (selected: Set<number>) => void;
+  chosen?: Set<number>;
 }
 
 export const ButtonList = ({
   listName = "",
   titles = [],
   only = "none",
+  onClick = () => {},
+  chosen,
 }: Props) => {
   const [chosenButtonIndices, setChosenButtonIndices] = useState<Set<number>>(
     new Set()
   );
+
+  useEffect(() => {
+    chosen && setChosenButtonIndices(chosen);
+  }, [chosen]);
 
   useEffect(() => {
     if (only === "required") {
@@ -23,18 +31,23 @@ export const ButtonList = ({
   }, [only]);
 
   const handleClick = (index: number) => {
+    let newButtonIndices = chosenButtonIndices;
+
     if (chosenButtonIndices.has(index)) {
       if (only !== "required") {
         chosenButtonIndices.delete(index);
-        setChosenButtonIndices(new Set(chosenButtonIndices));
+        newButtonIndices = new Set(chosenButtonIndices);
       }
     } else {
       if (only !== "none") {
-        setChosenButtonIndices(new Set<number>().add(index));
+        newButtonIndices = new Set<number>().add(index);
       } else {
-        setChosenButtonIndices(new Set(chosenButtonIndices.add(index)));
+        newButtonIndices = new Set(chosenButtonIndices.add(index));
       }
     }
+
+    setChosenButtonIndices(newButtonIndices);
+    onClick(newButtonIndices);
   };
 
   return (
