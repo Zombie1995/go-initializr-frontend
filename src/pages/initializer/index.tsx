@@ -43,6 +43,7 @@ export default function Initializer() {
             onClick={() => {
               onSelectedArchetype(index);
             }}
+            selected={index === archetypeStore.selectedArchetypeIndex}
           />
         ))}
       </ScrollWrapper>

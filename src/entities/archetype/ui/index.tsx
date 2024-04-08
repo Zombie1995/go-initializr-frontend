@@ -1,14 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatedBackground } from "shared/ui/animated-background";
 
 interface Props {
   title: string;
   description: string;
   onClick?: any;
+  selected?: boolean;
 }
 
 export const ArchetypeCard = (props: Props) => {
   const [showDescription, setShowDescription] = useState(false);
+
+  useEffect(() => {
+    if (props.selected && !showDescription) {
+      setShowDescription(true);
+    }
+  }, [props.selected, showDescription]);
+
+  useEffect(() => {
+    if (!props.selected) {
+      setShowDescription(false);
+    }
+  }, [props.selected]);
 
   return (
     <button
