@@ -1,4 +1,5 @@
 import axios from "axios";
+import { BASE_URL } from "shared/api/baseUrl";
 import { ArchetypeParam } from "shared/model/types";
 import { getDownloadArchetypeRequest } from "../model";
 
@@ -10,19 +11,19 @@ export const fetchDownloadArchetype = (
 
   switch (archetypeName) {
     case "Rest API Archetype":
-      url = "http://de6igz.ru/api/v1/rest-api-archetype";
+      url = `${BASE_URL}/rest-api-archetype`;
       break;
     case "Telegram Bot Archetype":
-      url = "http://de6igz.ru/api/v1/telegram-bot";
+      url = `${BASE_URL}/telegram-bot`;
       break;
     case "gRPC Archetype":
-      url = "http://de6igz.ru/api/v1/grpc";
+      url = `${BASE_URL}/grpc`;
       break;
     case "GraphQL Archetype":
-      url = "http://de6igz.ru/api/v1/graphql";
+      url = `${BASE_URL}/graphql`;
       break;
     case "Command Line Interface Archetype":
-      url = "http://de6igz.ru/api/v1/cli";
+      url = `${BASE_URL}/cli`;
       break;
   }
 
