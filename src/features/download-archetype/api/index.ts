@@ -7,7 +7,7 @@ export const fetchDownloadArchetype = (
   params: Array<ArchetypeParam>
 ) => {
   switch (archetypeName) {
-    case "Rest API":
+    case "Rest API Archetype":
       axios
         .post(
           "http://go-initializr.ru/api/v1/rest-api-archetype",
