@@ -2,12 +2,64 @@ interface Props {
   archetypeName: string;
   params: any;
 }
+import axios from "axios";
+import { ArchetypeParam } from "shared/model/types";
+
+//////////////////////////////////////////////////
+const getDownloadArchetypeRequest = (params: Array<ArchetypeParam>) => {
+  const result = params.reduce(
+    (acc: any, { title, variants, optional, chosenVariant }) => {
+      acc[title] = {
+        type: chosenVariant > -1 ? variants[chosenVariant] : "",
+      };
+      if (optional) {
+        acc[title].is_used = !optional;
+      }
+      return acc;
+    },
+    {}
+  );
+
+  return result;
+};
+
+const fetchDownloadArchetype = (
+  archetypeName: string,
+  params: Array<ArchetypeParam>
+) => {
+  switch (archetypeName) {
+    case "Rest API":
+      axios
+        .post(
+          "http://de6igz.ru/v1/rest-api-archetype",
+          getDownloadArchetypeRequest(params),
+          {
+            responseType: "blob",
+          }
+        )
+        .then((response) => {
+          const href = URL.createObjectURL(response.data);
+
+          const link = document.createElement("a");
+          link.href = href;
+          link.setAttribute("download", "archetype.zip");
+          document.body.appendChild(link);
+          link.click();
+
+          document.body.removeChild(link);
+          URL.revokeObjectURL(href);
+        })
+        .catch((e) => console.error(e));
+      break;
+  }
+};
+//////////////////////////////////////////////////
 
 export const DownloadArchetype = ({ archetypeName, params }: Props) => {
   return (
     <button
       className="size-[256px]"
-      // onClick={() => fetchDownloadArchetype(archetypeName, params)}
+      onClick={() => fetchDownloadArchetype(archetypeName, params)}
     >
       <svg
         className="fill-[#21ac4a] dark:fill-[#a1f859]"
