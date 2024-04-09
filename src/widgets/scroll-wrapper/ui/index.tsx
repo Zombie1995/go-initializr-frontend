@@ -32,7 +32,7 @@ export const ScrollWrapper = ({
       const container = scrollRef.current;
       if (container) {
         container.scrollLeft += event.deltaY;
-        event.preventDefault();
+        // event.preventDefault();
       }
     },
     []
