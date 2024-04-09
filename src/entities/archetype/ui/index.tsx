@@ -43,7 +43,7 @@ export const ArchetypeCard = (props: Props) => {
           showDescription ? "min-h-[50%] h-[50%]" : "min-h-0 h-0"
         } transition-all duration-500 ease-out absolute bottom-0 text-left bg-white/60 dark:bg-black/40 backdrop-blur-sm w-full px-4 py-2`}
       >
-        <p className="whitespace-pre-wrap text-[12px] break-words">
+        <p className="whitespace-pre-wrap text-[14px] break-words">
           {props.description}
         </p>
       </div>

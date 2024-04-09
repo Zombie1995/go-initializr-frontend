@@ -2,6 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    @font-face {
+        font-family: 'Oswald';
+        font-style: normal; /* Adjust the style as needed */
+        font-weight: 700; /* Adjust the weight as needed for the "Bold" style */
+        font-display: swap;
+        src: url(/src/shared/assets/fonts/Oswald-Bold.ttf) format('truetype');
+    }
+    
+    @font-face {
+        font-family: 'Oswald';
+        font-style: normal; /* Adjust the style as needed */
+        font-weight: 300; /* Adjust the weight as needed for the "ExtraLight" style */
+        font-display: swap;
+        src: url(/src/shared/assets/fonts/Oswald-ExtraLight.ttf) format('truetype');
+    }
+    
+    @font-face {
+        font-family: 'Oswald';
+        font-style: normal; /* Adjust the style as needed */
+        font-weight: 200; /* Adjust the weight as needed for the "Light" style */
+        font-display: swap;
+        src: url(/src/shared/assets/fonts/Oswald-Light.ttf) format('truetype');
+    }
+    
+    @font-face {
+        font-family: 'Oswald';
+        font-style: normal; /* Adjust the style as needed */
+        font-weight: 500; /* Adjust the weight as needed for the "Medium" style */
+        font-display: swap;
+        src: url(/src/shared/assets/fonts/Oswald-Medium.ttf) format('truetype');
+    }
+    
+    @font-face {
+        font-family: 'Oswald';
+        font-style: normal; /* Adjust the style as needed */
+        font-weight: 400; /* Adjust the weight as needed for the "Regular" style */
+        font-display: swap;
+        src: url(/src/shared/assets/fonts/Oswald-Regular.ttf) format('truetype');
+    }
+    
+    @font-face {
+        font-family: 'Oswald';
+        font-style: normal; /* Adjust the style as needed */
+        font-weight: 600; /* Adjust the weight as needed for the "SemiBold" style */
+        font-display: swap;
+        src: url(/src/shared/assets/fonts/Oswald-SemiBold.ttf) format('truetype');
+    }
+}
+
 @layer components {
     :root {
         @apply bg-[linear-gradient(to_bottom,_#5F8FB0_0svh,_#5dd2eb_20svh,_#5dd2eb_50svh,_#5dd2eb_80svh,_#5F8FB0_100svh)] dark:bg-[linear-gradient(to_bottom,_#21323e_0svh,_#1f4851_20svh,_#1f4851_50svh,_#1f4851_80svh,_#21323e_100svh)]

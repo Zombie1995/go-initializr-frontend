@@ -10,7 +10,7 @@ export const fetchDownloadArchetype = (
     case "Rest API":
       axios
         .post(
-          "http://de6igz.ru/v1/rest-api-archetype",
+          "http://go-initializr.ru/api/v1/rest-api-archetype",
           getDownloadArchetypeRequest(params),
           {
             responseType: "blob",

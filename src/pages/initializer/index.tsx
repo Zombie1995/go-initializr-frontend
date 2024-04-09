@@ -25,6 +25,9 @@ export default function Initializer() {
 
   return (
     <div className="relative overflow-hidden">
+      <p className="z-[200] absolute top-0 left-1/2 -translate-x-1/2 -translate-y-4 text-[120px] font-medium italic">
+        Go Initializr
+      </p>
       <ScrollWrapper
         selectedChildIndex={archetypeStore.selectedArchetypeIndex}
         onChildClick={setSelectedArchetype}
@@ -46,7 +49,7 @@ export default function Initializer() {
           childSelected(archetypeStore.selectedArchetypeIndex)
             ? "translate-x-[0%]"
             : "translate-x-[110%]"
-        } z-[200] transition-all duration-1000 absolute top-0 right-0`}
+        } z-[300] transition-all duration-1000 absolute top-0 right-0`}
       >
         <Parameterizer
           archetype={
@@ -57,7 +60,7 @@ export default function Initializer() {
           }}
         />
       </div>
-      <div className="z-[100] absolute bottom-0 left-1/2 -translate-x-1/2">
+      <div className="z-[200] absolute bottom-0 left-1/2 -translate-x-1/2">
         <Recommendations />
       </div>
     </div>

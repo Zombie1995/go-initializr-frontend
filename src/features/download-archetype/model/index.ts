@@ -7,7 +7,7 @@ export const getDownloadArchetypeRequest = (params: Array<ArchetypeParam>) => {
         type: chosenVariant > -1 ? variants[chosenVariant] : "",
       };
       if (optional) {
-        acc[title].is_used = !optional;
+        acc[title].is_used = chosenVariant > -1;
       }
       return acc;
     },

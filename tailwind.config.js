@@ -2,6 +2,9 @@
 export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    fontFamily: {
+      sans: ["Oswald", "sans-serif"],
+    },
     extend: {
       colors: {
         "dark-primary": "#1f4851",

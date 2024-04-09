@@ -13,7 +13,7 @@ const getDownloadArchetypeRequest = (params: Array<ArchetypeParam>) => {
         type: chosenVariant > -1 ? variants[chosenVariant] : "",
       };
       if (optional) {
-        acc[title].is_used = !optional;
+        acc[title].is_used = chosenVariant > -1;
       }
       return acc;
     },
@@ -31,7 +31,7 @@ const fetchDownloadArchetype = (
     case "Rest API":
       axios
         .post(
-          "http://de6igz.ru/v1/rest-api-archetype",
+          "http://go-initializr.ru/api/v1/rest-api-archetype",
           getDownloadArchetypeRequest(params),
           {
             responseType: "blob",
