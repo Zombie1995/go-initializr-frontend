@@ -10,19 +10,19 @@ export const fetchDownloadArchetype = (
 
   switch (archetypeName) {
     case "Rest API Archetype":
-      url = "http://go-initializr.ru/api/v1/rest-api-archetype";
+      url = "http://de6igz.ru/api/v1/rest-api-archetype";
       break;
     case "Telegram Bot Archetype":
-      url = "http://go-initializr.ru/api/v1/telegram-bot";
+      url = "http://de6igz.ru/api/v1/telegram-bot";
       break;
     case "gRPC Archetype":
-      url = "http://go-initializr.ru/api/v1/grpc";
+      url = "http://de6igz.ru/api/v1/grpc";
       break;
     case "GraphQL Archetype":
-      url = "http://go-initializr.ru/api/v1/graphql";
+      url = "http://de6igz.ru/api/v1/graphql";
       break;
     case "Command Line Interface Archetype":
-      url = "http://go-initializr.ru/api/v1/cli";
+      url = "http://de6igz.ru/api/v1/cli";
       break;
   }
 
