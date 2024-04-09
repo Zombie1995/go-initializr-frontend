@@ -13,4 +13,4 @@ services:
        source: ./
        target: /app
    tty: true
-   command: /bin/sh -c "npm i && npm run dev"
+   command: /bin/sh -c "npm i && npm config set proxy http://go-initializr.ru &&  npm run dev"
