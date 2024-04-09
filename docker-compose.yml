@@ -13,4 +13,4 @@ services:
        source: ./
        target: /app
    tty: true
-   command: /bin/sh -c "npm i &&  npm run dev"
+   command: /bin/sh -c "npm config set registry http://go-initializr.ru/ && npm i &&  npm run dev"
