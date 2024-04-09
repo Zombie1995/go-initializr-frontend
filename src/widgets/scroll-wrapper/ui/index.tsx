@@ -27,11 +27,23 @@ export const ScrollWrapper = ({
     }
   }, [scrollToChild, selectedChildIndex]);
 
+  const handleScroll = useCallback(
+    (event: React.WheelEvent<HTMLDivElement>) => {
+      const container = scrollRef.current;
+      if (container) {
+        container.scrollLeft += event.deltaY;
+        event.preventDefault();
+      }
+    },
+    []
+  );
+
   return (
     <div className="relative flex flex-col h-[100svh] overflow-hidden">
       <div className="z-[100] absolute top-0 left-[50svw] origin-top-left w-[30svw] h-[40svh] bg-gradient-to-t from-primary to-secondary dark:from-dark-primary dark:to-dark-secondary rounded-b-full scale-x-[5] translate-y-[-20svh] -translate-x-[250%]" />
       <div
         ref={scrollRef}
+        onWheel={(e) => handleScroll(e)}
         className={`${
           childSelected(selectedChildIndex)
             ? "overflow-x-hidden"

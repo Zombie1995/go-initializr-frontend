@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 
-function useEscapeKeyListener(onEscape: () => void) {
+function useKeyListener(key: string, onKeyDown: () => void) {
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        onEscape();
+      if (event.key === key) {
+        onKeyDown();
       }
     }
 
@@ -13,7 +13,7 @@ function useEscapeKeyListener(onEscape: () => void) {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [onEscape]);
+  }, [key, onKeyDown]);
 }
 
-export default useEscapeKeyListener;
+export default useKeyListener;
