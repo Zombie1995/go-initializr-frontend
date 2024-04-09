@@ -25,9 +25,11 @@ export default function Initializer() {
 
   return (
     <div className="relative overflow-hidden">
-      <p className="z-[200] absolute top-0 left-1/2 -translate-x-1/2 -translate-y-4 text-[120px] font-medium italic">
-        Go Initializr
-      </p>
+      <div className="z-[200] absolute top-0 left-1/2 -translate-x-1/2 h-[20svh] flex items-center">
+        <p className="-translate-y-4 sm:text-[7svw] text-[10svw] font-medium italic">
+          Go Initializr
+        </p>
+      </div>
       <ScrollWrapper
         selectedChildIndex={archetypeStore.selectedArchetypeIndex}
         onChildClick={setSelectedArchetype}
