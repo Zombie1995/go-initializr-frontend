@@ -52,7 +52,7 @@ const initialArchetypes = [
       {
         showTitle: "Database",
         title: "database",
-        variants: ["PostgreSQL"],
+        variants: ["PostgreSQL", "MySQL", "MongoDB"],
         optional: false,
         chosenVariant: 0,
       },
