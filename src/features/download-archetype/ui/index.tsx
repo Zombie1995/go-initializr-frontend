@@ -2,58 +2,7 @@ interface Props {
   archetypeName: string;
   params: any;
 }
-import axios from "axios";
-import { ArchetypeParam } from "shared/model/types";
-
-//////////////////////////////////////////////////
-const getDownloadArchetypeRequest = (params: Array<ArchetypeParam>) => {
-  const result = params.reduce(
-    (acc: any, { title, variants, optional, chosenVariant }) => {
-      acc[title] = {
-        type: chosenVariant > -1 ? variants[chosenVariant] : "",
-      };
-      if (optional) {
-        acc[title].is_used = chosenVariant > -1;
-      }
-      return acc;
-    },
-    {}
-  );
-
-  return result;
-};
-
-const fetchDownloadArchetype = (
-  archetypeName: string,
-  params: Array<ArchetypeParam>
-) => {
-  switch (archetypeName) {
-    case "Rest API":
-      axios
-        .post(
-          "http://go-initializr.ru/api/v1/rest-api-archetype",
-          getDownloadArchetypeRequest(params),
-          {
-            responseType: "blob",
-          }
-        )
-        .then((response) => {
-          const href = URL.createObjectURL(response.data);
-
-          const link = document.createElement("a");
-          link.href = href;
-          link.setAttribute("download", "archetype.zip");
-          document.body.appendChild(link);
-          link.click();
-
-          document.body.removeChild(link);
-          URL.revokeObjectURL(href);
-        })
-        .catch((e) => console.error(e));
-      break;
-  }
-};
-//////////////////////////////////////////////////
+import { fetchDownloadArchetype } from "../api";
 
 export const DownloadArchetype = ({ archetypeName, params }: Props) => {
   return (
