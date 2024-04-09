@@ -1,16 +1,8 @@
 version: "3.4"
 services:
- vite_docker:
-   image: node:alpine
-   container_name: vite_docker
-  #  Specify entrypoint to enter container and run commands by yourself later: docker exec -it vite_docker sh ; and then npm i && npm run dev
-  #  entrypoint: /bin/sh
-   ports:
-     - 5173:5173
-   working_dir: /app
-   volumes:
-     - type: bind
-       source: ./
-       target: /app
-   tty: true
-   command: /bin/sh -c "npm config set registry http://go-initializr.ru/ && npm i &&  npm run dev"
+  vite_docker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 5173:5173
