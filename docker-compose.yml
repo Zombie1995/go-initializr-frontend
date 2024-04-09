@@ -6,7 +6,7 @@ services:
   #  Specify entrypoint to enter container and run commands by yourself later: docker exec -it vite_docker sh ; and then npm i && npm run dev
   #  entrypoint: /bin/sh
    ports:
-     - 80:80
+     - 5173:5173
    working_dir: /app
    volumes:
      - type: bind
