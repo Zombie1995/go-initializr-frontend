@@ -133,16 +133,21 @@ export const fetchArchetypesFromLocalStorage = createEffect(async () => {
     !areCorrespondingFieldValuesSame(
       storedArchetypes,
       initialArchetypes,
-      "name",
-      "version"
+      "name"
     )
   )
     return initialArchetypes;
 
-  const archetypesWithParams = initialArchetypes.map((archetype, index) => ({
-    ...archetype,
-    params: storedArchetypes[index].params,
-  }));
+  const archetypesWithParams = initialArchetypes.map((archetype, index) => {
+    const params =
+      storedArchetypes[index].version === archetype.version
+        ? storedArchetypes[index].params
+        : archetype.params;
+    return {
+      ...archetype,
+      params: params,
+    };
+  });
 
   return archetypesWithParams;
 });
