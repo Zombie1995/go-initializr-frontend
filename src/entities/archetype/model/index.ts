@@ -117,8 +117,17 @@ const initialStore: initialStoreType = {
 
 export const fetchArchetypesFromLocalStorage = createEffect(async () => {
   const data = localStorage.getItem(LOCALSTORAGE_ARCHETYPES);
-  return initialArchetypes;
-  // return data ? JSON.parse(data) : initialArchetypes;
+
+  if (!data) return initialArchetypes;
+
+  const storedArchetypes: Array<Archetype> = JSON.parse(data);
+
+  const archetypesWithParams = initialArchetypes.map((archetype, index) => ({
+    ...archetype,
+    params: storedArchetypes[index].params,
+  }));
+
+  return archetypesWithParams;
 });
 
 export const setSelectedArchetype = createEvent<number>();
