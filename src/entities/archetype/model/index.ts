@@ -1,9 +1,11 @@
 import { createEffect, createEvent, createStore } from "effector";
+import { areCorrespondingFieldValuesSame } from "shared/model/areCorrespondingFieldValuesSame";
 import { ArchetypeParam } from "shared/model/types";
 
 const LOCALSTORAGE_ARCHETYPES = "ARCHETYPES";
 
 export type Archetype = {
+  version: number;
   title: string;
   description: string;
   params: Array<ArchetypeParam>;
@@ -17,6 +19,7 @@ type initialStoreType = {
 
 const initialArchetypes = [
   {
+    version: 0,
     title: "Rest API Archetype",
     description:
       "REST API Archetype:(Representational State Transfer) является архитектурным стилем для распределенных систем, который обычно используется для построения веб-сервисов. REST API Archetype представляет собой шаблон проектирования и реализации веб-сервиса, который следует принципам REST.",
@@ -45,6 +48,7 @@ const initialArchetypes = [
     ],
   },
   {
+    version: 0,
     title: "Telegram Bot Archetype",
     description:
       "Telegram Bot Archetype - это шаблон проектирования и разработки ботов для мессенджера Telegram. Telegram предоставляет API для создания ботов, которые могут выполнять различные задачи, такие как обработка сообщений от пользователей, отправка уведомлений, доступ к внешним сервисам и т. д.",
@@ -59,6 +63,7 @@ const initialArchetypes = [
     ],
   },
   {
+    version: 0,
     title: "gRPC Archetype",
     description:
       "gRPC Archetype - это высокопроизводительный RPC (Remote Procedure Call) фреймворк, разработанный Google. gRPC Archetype представляет собой шаблон проектирования и реализации распределенных систем, использующих gRPC для обмена данными и вызова удаленных процедур.",
@@ -80,6 +85,7 @@ const initialArchetypes = [
     ],
   },
   {
+    version: 0,
     title: "GraphQL Archetype",
     description:
       "GraphQL API Archetype - это язык запросов и среда выполнения, разработанные Facebook для работы с клиент-серверными приложениями. GraphQL API Archetype - это шаблон проектирования и реализации веб-сервисов, использующих GraphQL для определения и выполнения запросов от клиентов.",
@@ -94,6 +100,7 @@ const initialArchetypes = [
     ],
   },
   {
+    version: 0,
     title: "Command Line Interface Archetype",
     description:
       "CLI Tool Archetype представляет собой шаблон проектирования и реализации командной строки (CLI) утилиты, которая выполняет определенные задачи или операции. CLI - это интерфейс, который позволяет пользователям взаимодействовать с приложением через текстовую командную строку.",
@@ -121,6 +128,16 @@ export const fetchArchetypesFromLocalStorage = createEffect(async () => {
   if (!data) return initialArchetypes;
 
   const storedArchetypes: Array<Archetype> = JSON.parse(data);
+
+  if (
+    !areCorrespondingFieldValuesSame(
+      storedArchetypes,
+      initialArchetypes,
+      "name",
+      "version"
+    )
+  )
+    return initialArchetypes;
 
   const archetypesWithParams = initialArchetypes.map((archetype, index) => ({
     ...archetype,
